@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="catan.css" />
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+        <title>Catan</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-container">
+                <div class="turn-container">
+                    <div class="cursor-wrapper">
+                        <div class="cursor-preset" id="cp1">
+                            <i class="bx bxs-right-arrow"></i>
+                        </div>
+                        <div class="cursor-preset" id="cp2">
+                            <i class="bx bxs-right-arrow"></i>
+                        </div>
+                        <div class="cursor-preset" id="cp3">
+                            <i class="bx bxs-right-arrow"></i>
+                        </div>
+                        <div class="cursor-preset" id="cp4">
+                            <i class="bx bxs-right-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="players-wrapper">
+                        <div class="players-infos" id="pi1">
+                            <div class="top-infos">
+                                <span id="player1-name">*name*</span>
+                                <span id="player1-pv">Points de victoire : #</span>
+                            </div>
+                            <div class="bottom-infos">
+                                <span id="player1-resources">Ressources : #</span>
+
+                                <span id="player1-routes">Routes : #</span>
+                                <span id="player1-dev">Dev cards : #</span>
+                                <span id="player1-knights">Chevaliers : #</span>
+                            </div>
+                        </div>
+                        <div class="players-infos" id="pi2">
+                            <div class="top-infos">
+                                <span id="player2-name">*name*</span>
+                                <span id="player2-pv">Points de victoire : #</span>
+                            </div>
+                            <div class="bottom-infos">
+                                <span id="player2-resources">Ressources : #</span>
+
+                                <span id="player2-routes">Routes : #</span>
+                                <span id="player2-dev">Dev cards : #</span>
+                                <span id="player2-knights">Chevaliers : #</span>
+                            </div>
+                        </div>
+                        <div class="players-infos" id="pi3">
+                            <div class="top-infos">
+                                <span id="player3-name">*name*</span>
+                                <span id="player3-pv">Points de victoire : #</span>
+                            </div>
+                            <div class="bottom-infos">
+                                <span id="player3-resources">Ressources : #</span>
+
+                                <span id="player3-routes">Routes : #</span>
+                                <span id="player3-dev">Dev cards : #</span>
+                                <span id="player3-knights">Chevaliers : #</span>
+                            </div>
+                        </div>
+                        <div class="players-infos" id="pi4">
+                            <div class="top-infos">
+                                <span id="player4-name">*name*</span>
+                                <span id="player4-pv">Points de victoire : #</span>
+                            </div>
+                            <div class="bottom-infos">
+                                <span id="player4-resources">Ressources : #</span>
+
+                                <span id="player4-routes">Routes : #</span>
+                                <span id="player4-dev">Dev cards : #</span>
+                                <span id="player4-knights">Chevaliers : #</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-window">
+                        <div class="chat-area" id="chatArea"></div>
+                        <div class="input-area">
+                            <label for="message">
+                                <input type="text" name="message" id="message" placeholder="Votre message ici.." />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_desert.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_sheep.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wood.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_rock.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_clay.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_rock.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_clay.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+                <div class="hex">
+                    <img src="./assets/tiles/tile_wheat.jpg" alt="" />
+                </div>
+            </div>
+
+            <div class="right-container">
+                <div class="logs-wrapper">
+                    <span class="center">~Logs~</span>
+                    <div class="logs">
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                        <span>kjqshfdiusqdhfiuqshf</span>
+                    </div>
+                </div>
+                <div class="items-wrapper">
+                    <div class="items">Routes : #</div>
+                    <div class="items">Colonies : #</div>
+                    <div class="items">Villes : #</div>
+                </div>
+                <div class="ressources-wrapper">
+                    <div class="ressources">Bois : #</div>
+                    <div class="ressources">Argile : #</div>
+                    <div class="ressources">Blé : #</div>
+                    <div class="ressources">Mouton : #</div>
+                    <div class="ressources">Pierre : #</div>
+                </div>
+                <div class="actions-wrapper">
+                    <div class="actions">
+                        <i class="bx bxs-castle"></i>
+                    </div>
+                    <div class="actions">
+                        <i class="bx bx-transfer bx-rotate-90"></i>
+                    </div>
+                    <div class="actions">
+                        <i class="bx bxs-dice-3 bx-rotate-90"></i>
+                        <!-- <i class="bx bx-revision"></i> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
+</html>

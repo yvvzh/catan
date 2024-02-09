@@ -1,0 +1,21 @@
+{
+    "name": "catan",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "lts": "^1.2.0"
+    },
+    "devDependencies": {
+        "dotenv-webpack": "^8.0.1",
+        "webpack": "^5.90.1",
+        "webpack-cli": "^5.1.4"
+    },
+    "description": ""
+}
