@@ -215,6 +215,16 @@ body {
     font-weight: bold;
 }
 
+.great-odds {
+    color: red;
+}
+
+.thieves {
+    background-color: rgba(255, 0, 0, 0.548);
+    color: #ffffff97;
+    font-size: 80px;
+}
+
 .hex {
     display: flex;
     justify-content: center;
