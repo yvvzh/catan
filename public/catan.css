@@ -204,7 +204,7 @@ body {
 .token {
     height: 70px;
     width: 70px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(255, 243, 228);
     z-index: 2;
     position: absolute;
     border-radius: 50px;
@@ -213,10 +213,24 @@ body {
     align-items: center;
     font-size: 50px;
     font-weight: bold;
+    cursor: default;
+}
+
+.number {
+    max-height: 100%;
+    margin-bottom: 10px;
 }
 
 .great-odds {
     color: red;
+}
+
+.ratio {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    background-color: #1f1f1fb4;
+    color: rgb(255, 243, 228);
 }
 
 .thieves {
@@ -422,6 +436,8 @@ body {
     grid-row-start: 7;
     grid-column: 10 / span 2;
 }
+
+/**/
 
 /* RIGHT-CONTAINER SETTINGS */
 .right-container {

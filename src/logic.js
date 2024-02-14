@@ -142,12 +142,21 @@ const pattern = [
 
 let availableTiles = ["wheat", "clay", "rock", "wood", "sheep", "desert"];
 
-let usedWheat = 0;
-let usedClay = 0;
-let usedRock = 0;
-let usedWood = 0;
-let usedSheep = 0;
-let usedDesert = 0;
+let usedWheatTile = 0;
+let usedClayTile = 0;
+let usedRockTile = 0;
+let usedWoodTile = 0;
+let usedSheepTile = 0;
+let usedDesertTile = 0;
+
+let availableTrades = ["classic", "wood", "clay", "wheat", "sheep", "rock"];
+
+let usedClassicTrade = 0;
+let usedWoodTrade = 0;
+let usedWheatTrade = 0;
+let usedClayTrade = 0;
+let usedRockTrade = 0;
+let usedSheepTrade = 0;
 
 boardInit();
 
@@ -161,7 +170,7 @@ function boardInit() {
         asset.src = assetLink;
         tile.appendChild(asset);
 
-        if ((i >= 5 && i <= 7) || (i >= 10 && i <= 13) || (i >= 16 && i <= 20) || (i >= 23 && i <= 26) || (i >= 29 && i <= 31)) {
+        if (pattern[i] === "random") {
             const token = document.createElement("div");
             token.classList.add("token");
             if (!assetLink.includes("desert")) {
@@ -181,6 +190,19 @@ function boardInit() {
                 token.appendChild(icon);
             }
             tile.appendChild(token);
+        } else if (pattern[i] === "port") {
+            const token = document.createElement("div");
+            token.classList.add("token", "ratio");
+            const tradeIndex = generateRandomTrade();
+            if (tradeIndex > 0) {
+                const name = document.createElement("div");
+                name.textContent = trades[tradeIndex].name.toUpperCase();
+                token.appendChild(name);
+            }
+            const ratio = document.createElement("div");
+            ratio.textContent = `${trades[tradeIndex].ratio} : 1`;
+            token.appendChild(ratio);
+            tile.appendChild(token);
         }
         grid.appendChild(tile);
     }
@@ -196,7 +218,7 @@ function assetSelector(i) {
             asset = tiles[1].asset;
             break;
         case "random":
-            asset = tiles[generateRandom()].asset;
+            asset = tiles[generateRandomAsset()].asset;
             break;
         default:
             console.log("assetSelector() switch case FAILED");
@@ -205,37 +227,37 @@ function assetSelector(i) {
     return asset;
 }
 
-function generateRandom() {
+function generateRandomAsset() {
     const random = Math.floor(Math.random() * availableTiles.length);
     const selected = availableTiles[random];
     let assetIndex;
     switch (selected) {
         case "wheat":
             assetIndex = 2;
-            usedWheat++;
+            usedWheatTile++;
             break;
         case "clay":
             assetIndex = 3;
-            usedClay++;
+            usedClayTile++;
             break;
         case "rock":
             assetIndex = 4;
-            usedRock++;
+            usedRockTile++;
             break;
         case "wood":
             assetIndex = 5;
-            usedWood++;
+            usedWoodTile++;
             break;
         case "sheep":
             assetIndex = 6;
-            usedSheep++;
+            usedSheepTile++;
             break;
         case "desert":
             assetIndex = 7;
-            usedDesert++;
+            usedDesertTile++;
             break;
         default:
-            console.log("generateRandom() switch case FAILED");
+            console.log("generateRandomAsset() switch case FAILED");
     }
 
     manageAvailableTiles(tiles[assetIndex].name);
@@ -247,22 +269,22 @@ function manageAvailableTiles(name) {
     let elementToCheck;
     switch (name) {
         case "wheat":
-            elementToCheck = usedWheat;
+            elementToCheck = usedWheatTile;
             break;
         case "clay":
-            elementToCheck = usedClay;
+            elementToCheck = usedClayTile;
             break;
         case "rock":
-            elementToCheck = usedRock;
+            elementToCheck = usedRockTile;
             break;
         case "wood":
-            elementToCheck = usedWood;
+            elementToCheck = usedWoodTile;
             break;
         case "sheep":
-            elementToCheck = usedSheep;
+            elementToCheck = usedSheepTile;
             break;
         case "desert":
-            elementToCheck = usedDesert;
+            elementToCheck = usedDesertTile;
             break;
         default:
             console.log("manageAvailableTiles() switch case FAILED");
@@ -273,6 +295,78 @@ function manageAvailableTiles(name) {
         let indexToRemove = availableTiles.indexOf(name);
         if (indexToRemove !== -1) {
             availableTiles.splice(indexToRemove, 1);
+        }
+    }
+}
+
+function generateRandomTrade() {
+    const random = Math.floor(Math.random() * availableTrades.length);
+    const selected = availableTrades[random];
+    let tradeIndex;
+    switch (selected) {
+        case "classic":
+            tradeIndex = 0;
+            usedClassicTrade++;
+            break;
+        case "wood":
+            tradeIndex = 1;
+            usedWoodTrade++;
+            break;
+        case "clay":
+            tradeIndex = 2;
+            usedClayTrade++;
+            break;
+        case "wheat":
+            tradeIndex = 3;
+            usedWheatTrade++;
+            break;
+        case "sheep":
+            tradeIndex = 4;
+            usedSheepTrade++;
+            break;
+        case "rock":
+            tradeIndex = 5;
+            usedRockTrade++;
+            break;
+        default:
+            console.log("generateRandomTrade() switch case FAILED");
+    }
+
+    manageAvailableTrades(trades[tradeIndex].name);
+
+    return tradeIndex;
+}
+
+function manageAvailableTrades(name) {
+    let elementToCheck;
+    switch (name) {
+        case "wheat":
+            elementToCheck = usedWheatTrade;
+            break;
+        case "clay":
+            elementToCheck = usedClayTrade;
+            break;
+        case "rock":
+            elementToCheck = usedRockTrade;
+            break;
+        case "wood":
+            elementToCheck = usedWoodTrade;
+            break;
+        case "sheep":
+            elementToCheck = usedSheepTrade;
+            break;
+        case "classic":
+            elementToCheck = usedClassicTrade;
+            break;
+        default:
+            console.log("manageAvailableTrades() switch case FAILED");
+    }
+    const quantityToCheck = trades[trades.findIndex((trade) => trade.name === name)].quantity;
+
+    if (elementToCheck >= quantityToCheck) {
+        let indexToRemove = availableTrades.indexOf(name);
+        if (indexToRemove !== -1) {
+            availableTrades.splice(indexToRemove, 1);
         }
     }
 }
