@@ -202,40 +202,39 @@ function boardInit() {
     gridInit();
     let patternCSAindex = 0;
     let tokensIndex = 0;
+
     for (let i = 0; i < pattern.length; i++) {
+        let currentTrade = "none";
+        let currentRessource = "desert";
+        let currentNumber = "none";
+        let checkCSA = 0;
+
         const tile = document.createElement("div");
         tile.classList.add("hex");
         const asset = document.createElement("img");
         const assetLink = assetSelector(i);
+        const currentRessourceIndex = tiles.findIndex(function (obj) {
+            return obj["asset"] === assetLink;
+        });
+        currentRessource = tiles[currentRessourceIndex].name;
+
         asset.src = assetLink;
         tile.appendChild(asset);
 
         if (pattern[i] === "random") {
             const token = document.createElement("div");
             token.classList.add("token");
-            if (!assetLink.includes("desert")) {
+            if (!asset.src.includes("desert")) {
                 const number = document.createElement("div");
                 number.classList.add("number");
                 number.textContent = tokens[tokensIndex];
+                currentNumber = tokens[tokensIndex];
                 token.appendChild(number);
-                if (assetLink.includes("wheat")) {
-                    manageRawCSA("ressource", patternCSA[patternCSAindex], "wheat");
-                } else if (assetLink.includes("clay")) {
-                    manageRawCSA("ressource", patternCSA[patternCSAindex], "clay");
-                } else if (assetLink.includes("rock")) {
-                    manageRawCSA("ressource", patternCSA[patternCSAindex], "rock");
-                } else if (assetLink.includes("wood")) {
-                    manageRawCSA("ressource", patternCSA[patternCSAindex], "wood");
-                } else if (assetLink.includes("sheep")) {
-                    manageRawCSA("ressource", patternCSA[patternCSAindex], "sheep");
-                }
-
-                manageRawCSA("number", patternCSA[patternCSAindex], tokens[tokensIndex]);
-                patternCSAindex++;
 
                 if (tokens[tokensIndex] === "6" || tokens[tokensIndex] === "8") {
                     token.classList.add("great-odds");
                 }
+
                 tokensIndex++;
             } else {
                 token.classList.add("thieves");
@@ -252,15 +251,35 @@ function boardInit() {
                 const name = document.createElement("div");
                 name.textContent = trades[tradeIndex].name.toUpperCase();
                 token.appendChild(name);
-                manageRawCSA("trade", patternCSA[patternCSAindex], trades[tradeIndex].name);
-                patternCSAindex++;
             }
+            currentTrade = trades[tradeIndex].name;
             const ratio = document.createElement("div");
             ratio.textContent = `${trades[tradeIndex].ratio} : 1`;
             token.appendChild(ratio);
             tile.appendChild(token);
         }
         grid.appendChild(tile);
+
+        if (currentRessource !== "port" && currentRessource !== "sea" && currentRessource !== "desert") {
+            manageRawCSA("ressource", patternCSA[patternCSAindex], currentRessource);
+            checkCSA++;
+        } else if (currentRessource === "desert") {
+            checkCSA++;
+        }
+
+        if (currentNumber !== "none") {
+            manageRawCSA("number", patternCSA[patternCSAindex], currentNumber);
+            checkCSA++;
+        }
+
+        if (currentTrade !== "none") {
+            manageRawCSA("trade", patternCSA[patternCSAindex], currentTrade);
+            checkCSA++;
+        }
+
+        if (checkCSA > 0) {
+            patternCSAindex++;
+        }
     }
     manageCitySpotAttributes();
 }
@@ -299,7 +318,7 @@ function manageRawCSA(type, spots, value) {
                 if (spotIndex !== -1) {
                     rawCSA[spotIndex].trade = value;
                 } else {
-                    const newRawCSA = {
+                    let newRawCSA = {
                         id: spot,
                         numbers: [],
                         ressources: [0, 0, 0, 0, 0],
@@ -340,7 +359,7 @@ function manageRawCSA(type, spots, value) {
                 if (spotIndex !== -1) {
                     rawCSA[spotIndex].ressources[indexToItterate]++;
                 } else {
-                    const newRawCSA = {
+                    let newRawCSA = {
                         id: spot,
                         numbers: [],
                         ressources: [0, 0, 0, 0, 0],
@@ -360,7 +379,7 @@ function manageRawCSA(type, spots, value) {
                 if (spotIndex !== -1) {
                     rawCSA[spotIndex].numbers.push(value);
                 } else {
-                    const newRawCSA = {
+                    let newRawCSA = {
                         id: spot,
                         numbers: [],
                         ressources: [0, 0, 0, 0, 0],
