@@ -193,10 +193,18 @@ let rawCSA = [];
 
 let citySpotsAttributes = [];
 let roadSpotsAttributes = [];
+let diceRollEvents = [
+    {
+        number: "7",
+        events: ["thieves"],
+    },
+];
 let usedSpots = [];
 
 boardInit();
 console.log(citySpotsAttributes);
+console.log(roadSpotsAttributes);
+console.log(diceRollEvents);
 
 function boardInit() {
     gridInit();
@@ -279,6 +287,20 @@ function boardInit() {
 
         if (checkCSA > 0) {
             patternCSAindex++;
+        }
+        if (currentNumber !== "none" && currentRessource !== "port" && currentRessource !== "sea" && currentRessource !== "desert") {
+            const eventIndex = diceRollEvents.findIndex(function (obj) {
+                return obj["number"] === currentNumber;
+            });
+            if (eventIndex !== -1) {
+                diceRollEvents[eventIndex].events.push(currentRessource);
+            } else {
+                const newDiceRollEvent = {
+                    number: currentNumber,
+                    events: [currentRessource],
+                };
+                diceRollEvents.push(newDiceRollEvent);
+            }
         }
     }
     manageCitySpotAttributes();
