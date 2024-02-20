@@ -1,3 +1,6 @@
+// code provenant du projet little_chat_firebase
+// à adapter pour une base de données firestore
+
 import { ref, set, push, child, onChildAdded } from "firebase/database";
 import { db } from "./firebase";
 

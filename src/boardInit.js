@@ -1,3 +1,5 @@
+import * as dbManips from "./dbManips.js";
+
 const grid = document.querySelector(".grid-container");
 const matrix = document.querySelector(".interactive-grid");
 
@@ -189,9 +191,8 @@ const patternCSA = [
     [47, 51], // port 8
     [49, 52], // port 9
 ];
-let rawCSA = [];
 
-let citySpotsAttributes = [];
+let rawCSA = [];
 let roadSpotsAttributes = [];
 let diceRollEvents = [
     {
@@ -199,12 +200,17 @@ let diceRollEvents = [
         events: ["thieves"],
     },
 ];
-let usedSpots = [];
 
 boardInit();
-console.log(citySpotsAttributes);
-console.log(roadSpotsAttributes);
-console.log(diceRollEvents);
+
+// Database push and pull
+
+// dbManips.pushData(rawCSA, "citySpotsAttributes");
+// dbManips.getData("citySpotsAttributes");
+// dbManips.pushData(roadSpotsAttributes, "roadSpotsAttributes");
+// dbManips.getData("roadSpotsAttributes");
+// dbManips.pushData(diceRollEvents, "diceRollEvents");
+// dbManips.getData("diceRollEvents");
 
 function boardInit() {
     gridInit();
@@ -303,7 +309,6 @@ function boardInit() {
             }
         }
     }
-    manageCitySpotAttributes();
 }
 
 function gridInit() {
@@ -415,24 +420,6 @@ function manageRawCSA(type, spots, value) {
         default:
             console.log("manageRawCSA() switch case FAILED");
     }
-}
-
-function manageCitySpotAttributes() {
-    rawCSA.forEach((e) => {
-        const newCSA = {
-            id: `spot${e.id}`, // spot id
-            numbers: e.numbers, // numbers associated
-            wheat: e.ressources[0], // qty
-            clay: e.ressources[1], // qty
-            rock: e.ressources[2], // qty
-            wood: e.ressources[3], // qty
-            sheep: e.ressources[4], // qty
-            trade: e.trade, // name of the trade
-            owner: "none",
-            building: "none",
-        };
-        citySpotsAttributes.push(newCSA);
-    });
 }
 
 function assetSelector(i) {
