@@ -1136,6 +1136,7 @@ body {
 
 .logs {
     overflow-y: scroll;
+    overflow-wrap: break-word;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1170,12 +1171,13 @@ body {
 .actions-wrapper {
     display: flex;
     justify-content: space-between;
-    font-size: 100px;
+    font-size: 80px;
     width: 440px;
 }
 
 .actions {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(25, 25, 25, 0.864);
@@ -1185,7 +1187,126 @@ body {
     border-radius: 10px;
 }
 
+.actions span {
+    font-size: 18px;
+}
+
 .actions:hover {
     cursor: pointer;
     color: rgb(255, 243, 228);
+}
+
+.next-actions-wrapper {
+    width: 600px;
+    height: 200px;
+    position: absolute;
+    top: 400px;
+    left: 710px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    color: rgba(255, 243, 228, 0.561);
+}
+
+.next-actions {
+    background-color: rgba(25, 25, 25, 0.955);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+    width: 30%;
+    border-radius: 10px;
+    font-size: 110px;
+}
+
+.next-actions span {
+    font-size: 30px;
+}
+
+.next-actions:hover {
+    cursor: pointer;
+    color: rgb(255, 243, 228);
+}
+
+.navbar {
+    background-color: rgba(25, 25, 25, 0.864);
+    width: 600px;
+    height: 65px;
+    position: absolute;
+    bottom: 0;
+    left: 780px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navbarDevs {
+    height: 100%;
+    width: 70%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbarSeparator {
+    background-color: rgba(255, 243, 228, 0.561);
+    width: 1px;
+    height: 75%;
+}
+
+.navbarBonuses {
+    height: 100%;
+    width: 25%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navItem {
+    color: rgb(255, 243, 228);
+    font-size: 34px;
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navItem span {
+    font-size: 14px;
+}
+
+.sidebar {
+    height: 65px;
+    width: 150px;
+    position: absolute;
+    left: 630px;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: rgb(255, 243, 228);
+}
+
+.sideActions {
+    background-color: rgba(25, 25, 25, 0.864);
+    width: 48%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 243, 228, 0.561);
+    font-size: 30px;
+}
+
+.sideActions:hover {
+    cursor: pointer;
+    color: rgb(255, 243, 228);
+}
+
+.sideActions span {
+    font-size: 13px;
 }
