@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="logged.css" />
+        <title>Salle d'attente</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logInfos">Connecté en tant que: <span id="googleUserName"></span></div>
+            <div class="createRoom">
+                Créer une partie :
+                <button id="newRoomBtn">Générer un ID</button>
+            </div>
+            <div class="generated" hidden>
+                <span>ID généré : </span>
+                <span id="generatedID"></span>
+            </div>
+            <div class="roomSelector">
+                Rejoindre une partie :
+                <input type="text" id="joinRoomInput" placeholder="ID de la partie..." />
+                <button id="joinRoomBtn">Rejoindre</button>
+            </div>
+        </div>
+    </body>
+    <script src="main.js"></script>
+</html>

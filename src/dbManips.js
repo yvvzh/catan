@@ -1,5 +1,30 @@
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase";
+
+let playersDocRef;
+
+export async function setRoomID(roomID) {
+    playersDocRef = doc(db, roomID, "players");
+    try {
+        await setDoc(doc(db, roomID, "players"), {
+            player1: "default",
+            player1status: false,
+        });
+    } catch (e) {
+        console.error("Error adding room: ", e);
+    }
+}
+
+export async function pushPlayer(userID, isHost) {
+    try {
+        await updateDoc(playersDocRef, {
+            player1: userID,
+            player1status: isHost,
+        });
+    } catch (e) {
+        console.error("Error adding player: ", e);
+    }
+}
 
 export function pushData(data, type) {
     switch (type) {
