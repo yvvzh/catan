@@ -1,4 +1,4 @@
-// import * as dbManips from "./dbManips.js";
+import * as dbManips from "./dbManips.js";
 
 const grid = document.querySelector(".grid-container");
 const matrix = document.querySelector(".interactive-grid");

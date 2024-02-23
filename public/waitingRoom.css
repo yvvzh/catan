@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Diphylleia&display=swap");
+
+html,
+body {
+    font-family: "Diphylleia", serif;
+    padding: 0;
+    margin: 0;
+    background-color: #454545;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    background-color: #1b1b1b;
+    color: rgb(255, 247, 238);
+    border-radius: 10px;
+    height: 300px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.wPlayers {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.rollBtnArea {
+    margin: 10px;
+    padding: 0 10px 0 10px;
+    color: rgb(255, 247, 238);
+}
+
+button {
+    border: none;
+    background-color: #1b1b1b;
+    color: rgb(255, 247, 238);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-family: "Diphylleia", serif;
+    font-size: 18px;
+}
+
+button:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* LOADER */
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #5a5a5a; /* Blue */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite; /* Apply animation */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

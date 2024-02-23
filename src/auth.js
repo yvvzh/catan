@@ -62,9 +62,11 @@ function updateUserProfile(user) {
     document.getElementById("googleUserName").textContent = userName;
 }
 
-function joinRoom() {
-    // a définir
-    window.location.href = "./catan.html";
+async function joinRoom() {
+    const userName = document.getElementById("googleUserName").textContent;
+    roomID = document.getElementById("joinRoomInput").value;
+    await dbManips.pushPlayer(userID, isHost, userName, roomID);
+    window.location.href = "./waitingRoom.html";
 }
 
 function createRoom() {
@@ -74,8 +76,7 @@ function createRoom() {
     document.querySelector(".createRoom").setAttribute("hidden", true);
     isHost = true;
     document.getElementById("joinRoomInput").value = roomID;
-    dbManips.setRoomID(roomID);
-    dbManips.pushPlayer(userID, isHost);
+    dbManips.setRoom(roomID);
 }
 
 function generateRoomID() {
